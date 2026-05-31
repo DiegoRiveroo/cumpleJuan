@@ -96,15 +96,7 @@ function formDataToObject(form) {
   return Object.fromEntries(new FormData(form).entries());
 }
 
-document.getElementById("playlistForm").addEventListener("submit", async (event) => {
-  event.preventDefault();
-  const form = event.currentTarget;
-  const status = document.getElementById("playlistStatus");
-  const button = form.querySelector("button");
 
-  const result = await submitToSheet("playlist", formDataToObject(form), status, button);
-  if (result.ok) form.reset();
-});
 
 document.getElementById("memoryForm").addEventListener("submit", async (event) => {
   event.preventDefault();
