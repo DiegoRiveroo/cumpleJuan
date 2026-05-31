@@ -332,3 +332,21 @@ select option { background: #05040a; }
   .cursor-glow { display: none; }
   h1 { font-size: clamp(4.4rem, 24vw, 8rem); }
 }
+
+.hero-content h1 {
+  animation: cinematicReveal 2s ease forwards;
+}
+
+@keyframes cinematicReveal {
+  0% {
+    opacity: 0;
+    filter: blur(18px);
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
