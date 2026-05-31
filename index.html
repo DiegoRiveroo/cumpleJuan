@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Juan — Birthday Experience</title>
+  <meta name="description" content="Invitación interactiva para el cumpleaños de Juan — 12 de junio de 2026, 20:00 hs." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="grain"></div>
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <audio id="bgMusic" loop preload="none">
+    <!-- Agrega tu archivo en assets/still-dont-know-my-name.mp3 o cambia esta ruta -->
+    <source src="assets/still-dont-know-my-name.mp3" type="audio/mpeg" />
+  </audio>
+
+  <header class="floating-nav">
+    <span>JUAN</span>
+    <button id="musicToggle" aria-label="Activar o pausar música">Sound off</button>
+  </header>
+
+  <main>
+    <section class="panel hero" id="intro">
+      <div class="orb orb-one"></div>
+      <div class="orb orb-two"></div>
+      <div class="crystal crystal-a"></div>
+      <div class="crystal crystal-b"></div>
+      <div class="content hero-content">
+        <p class="eyebrow">Birthday Experience</p>
+        <h1>JUAN</h1>
+        <p class="date">12 June 2026 · 20:00 hs</p>
+        <div class="countdown" id="countdown">
+          <span><strong>--</strong><small>días</small></span>
+          <span><strong>--</strong><small>horas</small></span>
+          <span><strong>--</strong><small>min</small></span>
+          <span><strong>--</strong><small>seg</small></span>
+        </div>
+        <button class="primary-btn" id="enterBtn">Enter the night</button>
+        <p class="microcopy">Una pieza interactiva para celebrar, bailar y estar presentes.</p>
+      </div>
+    </section>
+
+    <section class="panel night scene-blue">
+      <div class="liquid-shape"></div>
+      <div class="content narrow reveal">
+        <p class="section-number">01</p>
+        <h2>Una noche para reencontrarnos.</h2>
+        <p>Para bailar. Para celebrar. Para que la pista se llene de recuerdos, clásicos y canciones que nos conectan.</p>
+      </div>
+    </section>
+
+    <section class="panel location scene-city">
+      <div class="content card reveal">
+        <p class="section-number">02</p>
+        <h2>Location</h2>
+        <p class="big-detail">Lavalle 4022</p>
+        <p>12 de junio de 2026 · 20:00 hs</p>
+        <a class="primary-btn link-btn" href="https://www.google.com/maps/search/?api=1&query=Lavalle%204022" target="_blank" rel="noopener">Ver ubicación</a>
+      </div>
+    </section>
+
+    <section class="panel dance scene-dance">
+      <div class="content split reveal">
+        <div>
+          <p class="section-number">03</p>
+          <h2>The dance floor</h2>
+          <p>Juan quiere bailar mucha música venezolana de fiesta de los 90.</p>
+          <p class="music-tags">Merengue venezolano · Tecnomerengue · Música de bodas · Pop latino 90s · Salsa</p>
+          <p>Y si venís con clásicos argentinos de hoy o de los 90, también sumalos. La pista se construye entre todos.</p>
+        </div>
+        <form class="glass-form" id="playlistForm">
+          <h3>Agregá una canción</h3>
+          <input name="name" placeholder="Tu nombre" required />
+          <input name="song" placeholder="Canción" required />
+          <input name="artist" placeholder="Artista" />
+          <button type="submit">Agregar a la playlist</button>
+          <p class="form-status" id="playlistStatus"></p>
+        </form>
+      </div>
+    </section>
+
+    <section class="panel gifts scene-metal">
+      <div class="content reveal">
+        <p class="section-number">04</p>
+        <h2>Details with personality</h2>
+        <p class="lead">Si deseás traer un detalle, Juan aprecia especialmente los objetos con historia, creatividad y personalidad.</p>
+        <div class="gift-grid">
+          <span>Juegos de mesa</span>
+          <span>Harry Potter</span>
+          <span>Artículos de arte</span>
+          <span>Objetos de cuero</span>
+          <span>Relojes vintage</span>
+          <span>Auriculares</span>
+          <span>Chocolate</span>
+          <span>Detalles dorados</span>
+        </div>
+        <p class="note">Cualquier gesto será bien recibido. Preferentemente evitar prendas de vestir.</p>
+      </div>
+    </section>
+
+    <section class="panel memory scene-nebula">
+      <div class="content split reveal">
+        <div>
+          <p class="section-number">05</p>
+          <h2>A memory for Juan</h2>
+          <p>Dejá un recuerdo, una frase o un deseo. Algo breve, honesto, divertido o emotivo.</p>
+        </div>
+        <form class="glass-form" id="memoryForm">
+          <h3>Un recuerdo</h3>
+          <input name="name" placeholder="Tu nombre" required />
+          <textarea name="message" placeholder="Tu mensaje para Juan" rows="5" required></textarea>
+          <button type="submit">Guardar recuerdo</button>
+          <p class="form-status" id="memoryStatus"></p>
+        </form>
+      </div>
+    </section>
+
+    <section class="panel rsvp scene-crystal">
+      <div class="content split reveal">
+        <div>
+          <p class="section-number">06</p>
+          <h2>Confirm your presence</h2>
+          <p class="lead">Es importante confirmar asistencia y cargar tus datos para poder organizar mejor la noche.</p>
+          <p>Sin dress code. Vení como te sientas mejor para bailar, disfrutar y celebrar con Juan.</p>
+        </div>
+        <form class="glass-form" id="rsvpForm">
+          <h3>RSVP</h3>
+          <input name="firstName" placeholder="Nombre" required />
+          <input name="lastName" placeholder="Apellido" required />
+          <input name="phone" placeholder="Teléfono" required />
+          <select name="attendance" required>
+            <option value="">¿Asistirás?</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+            <option value="Tal vez">Tal vez</option>
+          </select>
+          <textarea name="note" placeholder="Mensaje opcional para Juan" rows="4"></textarea>
+          <button type="submit">Confirmar asistencia</button>
+          <p class="form-status" id="rsvpStatus"></p>
+        </form>
+      </div>
+    </section>
+
+    <section class="panel finale scene-final">
+      <div class="content narrow reveal">
+        <p class="eyebrow">See you under the lights</p>
+        <h2>La noche recién comienza.</h2>
+        <p>12 de junio · 20:00 hs · Lavalle 4022</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
