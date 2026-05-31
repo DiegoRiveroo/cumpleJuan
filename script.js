@@ -1,4 +1,3 @@
-// 1) Pega aquí la URL de tu Web App de Google Apps Script cuando la publiques.
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxzQtnpqcYpxSfWwL-cO5_MnDvegZ8-3z2rVuyoVGxE_m0Tk-5VpZUH1sx_XW_WYXWm/exec";
 
 const eventDate = new Date("2026-06-12T20:00:00-03:00");
@@ -11,14 +10,17 @@ const cursorGlow = document.getElementById("cursorGlow");
 function updateCountdown() {
   const now = new Date();
   const diff = eventDate - now;
+
   if (diff <= 0) {
     countdownEl.innerHTML = `<span><strong>Tonight</strong><small>is the night</small></span>`;
     return;
   }
+
   const days = Math.floor(diff / (1000 * 60 * 60 * 24));
   const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
   const minutes = Math.floor((diff / (1000 * 60)) % 60);
   const seconds = Math.floor((diff / 1000) % 60);
+
   countdownEl.innerHTML = `
     <span><strong>${days}</strong><small>días</small></span>
     <span><strong>${hours}</strong><small>horas</small></span>
@@ -26,15 +28,16 @@ function updateCountdown() {
     <span><strong>${seconds}</strong><small>seg</small></span>
   `;
 }
+
 setInterval(updateCountdown, 1000);
 updateCountdown();
 
 async function tryPlayMusic() {
   try {
     await music.play();
-    musicToggle.textContent = "Sound on";
+    musicToggle.textContent = "Atmosphere on";
   } catch (err) {
-    musicToggle.textContent = "Add music file";
+    musicToggle.textContent = "Tap to play";
   }
 }
 
@@ -48,7 +51,7 @@ musicToggle.addEventListener("click", async () => {
     await tryPlayMusic();
   } else {
     music.pause();
-    musicToggle.textContent = "Sound off";
+    musicToggle.textContent = "Play atmosphere";
   }
 });
 
@@ -65,24 +68,27 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 
-async function submitToSheet(type, data, statusEl) {
-  if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL.includes("GOOGLE_SCRIPT_URL")) {
-    statusEl.textContent = "Demo activa: falta conectar Google Sheets.";
-    return { ok: false };
-  }
-
+async function submitToSheet(type, data, statusEl, submitBtn) {
   statusEl.textContent = "Guardando...";
+  submitBtn.disabled = true;
+  submitBtn.dataset.originalText = submitBtn.dataset.originalText || submitBtn.textContent;
+  submitBtn.textContent = "Guardando...";
+
   try {
     await fetch(GOOGLE_SCRIPT_URL, {
       method: "POST",
       mode: "no-cors",
       body: JSON.stringify({ type, data })
     });
+
     statusEl.textContent = "Listo. Gracias ✨";
     return { ok: true };
   } catch (error) {
     statusEl.textContent = "No se pudo guardar. Intentalo de nuevo.";
     return { ok: false };
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = submitBtn.dataset.originalText;
   }
 }
 
@@ -94,7 +100,9 @@ document.getElementById("playlistForm").addEventListener("submit", async (event)
   event.preventDefault();
   const form = event.currentTarget;
   const status = document.getElementById("playlistStatus");
-  const result = await submitToSheet("playlist", formDataToObject(form), status);
+  const button = form.querySelector("button");
+
+  const result = await submitToSheet("playlist", formDataToObject(form), status, button);
   if (result.ok) form.reset();
 });
 
@@ -102,7 +110,9 @@ document.getElementById("memoryForm").addEventListener("submit", async (event) =
   event.preventDefault();
   const form = event.currentTarget;
   const status = document.getElementById("memoryStatus");
-  const result = await submitToSheet("memory", formDataToObject(form), status);
+  const button = form.querySelector("button");
+
+  const result = await submitToSheet("memory", formDataToObject(form), status, button);
   if (result.ok) form.reset();
 });
 
@@ -110,7 +120,10 @@ document.getElementById("rsvpForm").addEventListener("submit", async (event) => 
   event.preventDefault();
   const form = event.currentTarget;
   const status = document.getElementById("rsvpStatus");
-  const result = await submitToSheet("rsvp", formDataToObject(form), status);
+  const button = form.querySelector("button");
+
+  const result = await submitToSheet("rsvp", formDataToObject(form), status, button);
+
   if (result.ok) {
     form.reset();
     status.textContent = "Confirmación recibida. Nos vemos el 12 de junio ✨";
