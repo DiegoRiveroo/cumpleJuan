@@ -10,23 +10,20 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
-  
+
 <body>
 
-<a href="#rsvp" class="floating-rsvp">
-  ✨ RSVP
-</a>
+  <a href="#rsvp" class="floating-rsvp">✨ RSVP</a>
 
   <video class="bg-video" autoplay muted loop playsinline>
-  <source src="assets/background-video.mp4" type="video/mp4" />
-</video>
-<div class="video-overlay"></div>
-  
+    <source src="assets/background-video.mp4" type="video/mp4" />
+  </video>
+  <div class="video-overlay"></div>
+
   <div class="grain"></div>
   <div class="cursor-glow" id="cursorGlow"></div>
 
   <audio id="bgMusic" loop preload="none">
-    <!-- Agrega tu archivo en assets/still-dont-know-my-name.mp3 o cambia esta ruta -->
     <source src="assets/still-dont-know-my-name.mp3" type="audio/mpeg" />
   </audio>
 
@@ -36,22 +33,26 @@
   </header>
 
   <main>
+
     <section class="panel hero" id="intro">
       <div class="orb orb-one"></div>
       <div class="orb orb-two"></div>
       <div class="crystal crystal-a"></div>
       <div class="crystal crystal-b"></div>
+
       <div class="content hero-content">
         <p class="eyebrow">Birthday Experience</p>
         <h1>JUAN</h1>
-         <p class="date">Fiesta: 12 June 2026 · 20:00 hs</p>
+        <p class="date">Fiesta: 12 June 2026 · 20:00 hs</p>
         <p class="birthday-note">Recibimos el cumpleaños de Juan a medianoche · Cumple: 13 June</p>
+
         <div class="countdown" id="countdown">
           <span><strong>--</strong><small>días</small></span>
           <span><strong>--</strong><small>horas</small></span>
           <span><strong>--</strong><small>min</small></span>
           <span><strong>--</strong><small>seg</small></span>
         </div>
+
         <button class="primary-btn hero-cta" id="enterBtn">Enter the night ↓</button>
         <p class="scroll-hint">Deslizá hacia abajo para recorrer toda la invitación</p>
         <p class="microcopy">Una pieza interactiva para celebrar, bailar y estar presentes.</p>
@@ -64,6 +65,7 @@
         <p class="section-number">01</p>
         <h2>Una noche para reencontrarnos.</h2>
         <p>Para bailar. Para celebrar. Para que la pista se llene de recuerdos, clásicos y canciones que nos conectan.</p>
+        <p class="scroll-hint">Deslizá hacia abajo para ver todos los detalles</p>
       </div>
     </section>
 
@@ -74,7 +76,7 @@
         <p class="big-detail">Lavalle 4022</p>
         <p>SUM del edificio · Salón de Usos Múltiples</p>
         <p>Al llegar, indicar que van al SUM para el cumpleaños de Juan.</p>
-        <p>Fiesta: 12 de junio de 2026 · 20:00 hs · Recibimos su cumple a medianoche.</p>p>
+        <p>Fiesta: 12 de junio de 2026 · 20:00 hs · Recibimos su cumple a medianoche.</p>
         <a class="primary-btn link-btn" href="https://www.google.com/maps/search/?api=1&query=Lavalle%204022" target="_blank" rel="noopener">Ver ubicación</a>
       </div>
     </section>
@@ -84,56 +86,58 @@
         <div>
           <p class="section-number">03</p>
           <h2>The dance floor</h2>
-          <p>Juan quiere bailar mucha música venezolana de fiesta de los 90.</p>
+          <p>La música de la noche la construimos entre todos.</p>
           <p class="music-tags">Merengue venezolano · Tecnomerengue · Música de bodas · Pop latino 90s · Salsa</p>
-          <p>Y si venís con clásicos argentinos de hoy o de los 90, también sumalos. La pista se construye entre todos.</p>
+          <p>También puedes sumar clásicos argentinos de hoy o de los 90.</p>
         </div>
-        <form class="glass-form" id="playlistForm">
-          <h3>Agregá una canción</h3>
-          <input name="name" placeholder="Tu nombre" required />
-          <input name="song" placeholder="Canción" required />
-          <input name="artist" placeholder="Artista" />
-          <button type="submit">Agregar a la playlist</button>
-          <p class="form-status" id="playlistStatus"></p>
-        </form>
+
+        <div class="glass-form playlist-card">
+          <h3>Playlist colaborativa</h3>
+          <p>Agregá tus canciones favoritas directamente a la playlist compartida.</p>
+          <p>La pista empieza antes de la fiesta.</p>
+
+          <a
+            class="primary-btn link-btn"
+            href="https://www.youtube.com/playlist?list=PLiPKdG2T3BgtBWnYohBMHTCFevEpGBtgk&jct=IdNethHV-Cp-XZAa1tj8sg"
+            target="_blank"
+            rel="noopener"
+          >
+            🎵 Abrir playlist
+          </a>
+        </div>
       </div>
     </section>
 
-   <section class="panel gifts scene-metal">
-  <div class="content narrow reveal">
-    <p class="section-number">04</p>
+    <section class="panel gifts scene-metal">
+      <div class="content narrow reveal">
+        <p class="section-number">04</p>
+        <h2>If you insist.</h2>
 
-```
-<h2>If you insist.</h2>
+        <p class="lead">
+          Si deseas traer un detalle, piensa menos en el objeto y más en la historia.
+        </p>
 
-<p class="lead">
-  Si deseas traer un detalle, piensa menos en el objeto y más en la historia.
-</p>
+        <p>
+          Juan suele sentirse atraído por las cosas con carácter: relojes vintage, juegos que reúnan personas alrededor de una mesa, objetos vinculados al arte, la creatividad, la música, la fotografía o el diseño.
+        </p>
 
-<p>
-  Juan suele sentirse atraído por las cosas con carácter: relojes vintage, juegos que reúnan personas alrededor de una mesa, objetos vinculados al arte, la creatividad, la música, la fotografía o el diseño.
-</p>
+        <p>
+          También por pequeños guiños a Harry Potter, detalles dorados, cuero o cualquier hallazgo inesperado que parezca haber encontrado a la persona correcta.
+        </p>
 
-<p>
-  También por pequeños guiños a Harry Potter, detalles dorados, cuero o cualquier hallazgo inesperado que parezca haber encontrado a la persona correcta.
-</p>
+        <p>
+          Lo más importante no es el valor del regalo, sino la intención detrás de él.
+        </p>
 
-<p>
-  Lo más importante no es el valor del regalo, sino la intención detrás de él.
-</p>
+        <p class="note">
+          ✦ Muy importante: Juan prefiere no recibir prendas de vestir.
+        </p>
 
-<p class="note">
-  ✦ Importante: evitar prendas de vestir.
-</p>
-
-<p class="note">
-  ✦ ¿Necesitas ayuda o ideas? Puedes comunicarte con Diego.
-</p>
-```
-
-  </div>
-</section>
-
+        <p class="note">
+          ✦ ¿Necesitas ayuda o ideas? Puedes comunicarte con Diego.
+        </p>
+      </div>
+    </section>
 
     <section class="panel memory scene-nebula">
       <div class="content split reveal">
@@ -142,6 +146,7 @@
           <h2>A memory for Juan</h2>
           <p>Dejá un recuerdo, una frase o un deseo. Algo breve, honesto, divertido o emotivo.</p>
         </div>
+
         <form class="glass-form" id="memoryForm">
           <h3>Un recuerdo</h3>
           <input name="name" placeholder="Tu nombre" required />
@@ -152,14 +157,16 @@
       </div>
     </section>
 
-   <section id="rsvp" class="panel rsvp scene-crystal">
+    <section id="rsvp" class="panel rsvp scene-crystal">
       <div class="content split reveal">
         <div>
           <p class="section-number">06</p>
           <h2>Confirm your presence</h2>
           <p class="lead">Es importante confirmar asistencia y cargar tus datos para poder organizar mejor la noche.</p>
+          <p>Fiesta: 12 de junio · Recibimos el cumpleaños de Juan a medianoche. Su cumple es el 13 de junio.</p>
           <p>Sin dress code. Vení como te sientas mejor para bailar, disfrutar y celebrar con Juan.</p>
         </div>
+
         <form class="glass-form" id="rsvpForm">
           <h3>RSVP</h3>
           <input name="firstName" placeholder="Nombre" required />
@@ -182,9 +189,11 @@
       <div class="content narrow reveal">
         <p class="eyebrow">See you under the lights</p>
         <h2>La noche recién comienza.</h2>
-        <p>12 de junio · 20:00 hs · Lavalle 4022</p>
+        <p>Fiesta: 12 de junio · 20:00 hs · Lavalle 4022</p>
+        <p>Recibimos el cumpleaños de Juan a medianoche · Cumple: 13 de junio</p>
       </div>
     </section>
+
   </main>
 
   <script src="script.js"></script>
